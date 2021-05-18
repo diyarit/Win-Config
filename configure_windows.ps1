@@ -58,6 +58,7 @@ if ($ISVM) {
 }
 
 echo "Changing RDP port to 20389..."
+netsh advfirewall firewall delete rule name="RDP Alternate Port"
 netsh advfirewall firewall add rule name="RDP Alternative Port" dir=in localport="20389" protocol=tcp  action=allow
 Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Control\Terminal*Server\WinStations\RDP-TCP\ -Name PortNumber -Value 20389
 
